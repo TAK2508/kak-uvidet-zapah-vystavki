@@ -2,6 +2,46 @@
 <html lang="ru" data-gallery-theme="light">
 <head>
 <meta charset="utf-8">
+<script id="exhibition-image-location">
+(function(){
+ 'use strict';
+ const base=new URL('.',document.baseURI), attempts=new WeakMap();
+ window.addEventListener('load',function(event){
+   if(event.target&&event.target.tagName==='IMG')attempts.delete(event.target);
+ },true);
+ window.addEventListener('error',function(event){
+   const img=event.target;
+   if(!img||img.tagName!=='IMG')return;
+   let source;
+   try{source=new URL(img.currentSrc||img.src,document.baseURI);}catch(error){return;}
+   if(!['http:','https:','file:'].includes(source.protocol)||source.origin!==base.origin)return;
+   const name=source.pathname.split('/').pop();
+   if(!/\.(?:webp|png|jpe?g|avif|gif)$/i.test(name))return;
+   const key=name+source.search;
+   let state=attempts.get(img);
+   if(!state||state.key!==key){state={key:key,seen:new Set()};attempts.set(img,state);}
+   state.seen.add(source.pathname);
+   const preview=/-(?:560|1122)\.webp$/i.test(name);
+   const folders=preview?['','assets/previews/','assets/']:['','assets/','assets/previews/'];
+   const candidates=folders.map(function(folder){
+     const url=new URL(folder+name,base);url.search=source.search;return url;
+   });
+   const full=preview&&img.getAttribute('data-full-src');
+   if(full){
+     const fullName=new URL(full,base).pathname.split('/').pop();
+     ['', 'assets/'].forEach(function(folder){
+       const url=new URL(folder+fullName,base);url.search=source.search;candidates.push(url);
+     });
+   }
+   const next=candidates.find(function(url){return !state.seen.has(url.pathname);});
+   if(!next)return;
+   img.removeAttribute('srcset');img.removeAttribute('sizes');
+   img.src=next.href;
+   event.stopImmediatePropagation();
+ },true);
+})();
+</script>
+
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script id="exhibition-entrance">
 (function(){
@@ -88,7 +128,7 @@ html[data-gallery-theme="dark"] .enter{background:#e2d8ec;color:#29252e;border-c
 <!-- Новые выставки добавляются сюда отдельными exhibition-card со своей страницей и обложкой. -->
 <article class="exhibition-card" aria-label="Тематическая выставка «Специи и приправы»">
 <a class="exhibition-entry" href="spices.html#basil-green" data-keep-theme aria-label="Смотреть картины «Специи и приправы»">
-<img src="assets/spices-hall-cover.webp" width="900" height="675" alt="Специи и приправы. Аромат, сохранённый в сухом растении" loading="lazy" decoding="async">
+<img src="spices-hall-cover.webp" width="900" height="675" alt="Специи и приправы. Аромат, сохранённый в сухом растении" loading="lazy" decoding="async">
 <div class="exhibition-caption">
 <div><p class="exhibition-count">27 сухих образцов · 117 картин</p></div>
 <span class="enter">Смотреть картины <span aria-hidden="true">→</span></span>
