@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru" data-gallery-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script id="exhibition-entrance">
+(function(){
+ 'use strict';
+ const artworkAnchors=["basil-green","basil-green-kinetic","basil-green-main","basil-green-maxima","basil-green-three","basil-purple","basil-purple-kinetic","basil-purple-main","basil-purple-maxima","basil-purple-three","bay-leaf","bay-leaf-kinetic","bay-leaf-main","bay-leaf-maxima","bay-leaf-three","black-pepper","black-pepper-kinetic","black-pepper-main","black-pepper-maxima","black-pepper-three","chicken","chicken-kinetic","chicken-main","chicken-maxima","chicken-three","coffee-arabica","coffee-arabica-kinetic","coffee-arabica-main","coffee-arabica-maxima","coffee-arabica-three","coriander","coriander-kinetic","coriander-main","coriander-maxima","coriander-three","dill","dill-kinetic","dill-main","dill-maxima","dill-three","fish","fish-kinetic","fish-main","fish-maxima","fish-three","garlic-dried","garlic-dried-kinetic","garlic-dried-main","garlic-dried-maxima","garlic-dried-three","ginger","ginger-kinetic","ginger-main","ginger-maxima","ginger-three","grill","grill-kinetic","grill-main","grill-maxima","grill-three","hall-navigation","integral-characteristic","integral-characteristic-main","integral-title","khmeli-suneli","khmeli-suneli-kinetic","khmeli-suneli-main","khmeli-suneli-maxima","khmeli-suneli-three","mexican","mexican-kinetic","mexican-main","mexican-maxima","mexican-three","mince","mince-kinetic","mince-main","mince-maxima","mince-three","mustard-seed","mustard-seed-kinetic","mustard-seed-main","mustard-seed-maxima","mustard-seed-three","paprika-smoked","paprika-smoked-kinetic","paprika-smoked-main","paprika-smoked-maxima","paprika-smoked-three","paprika-sweet","paprika-sweet-kinetic","paprika-sweet-main","paprika-sweet-maxima","paprika-sweet-three","parsley","parsley-kinetic","parsley-main","parsley-maxima","parsley-three","pilaf","pilaf-kinetic","pilaf-main","pilaf-maxima","pilaf-three","pork","pork-kinetic","pork-main","pork-maxima","pork-three","potato","potato-kinetic","potato-main","potato-maxima","potato-three","provence-herbs","provence-herbs-kinetic","provence-herbs-main","provence-herbs-maxima","provence-herbs-three","red-hot-pepper","red-hot-pepper-kinetic","red-hot-pepper-main","red-hot-pepper-maxima","red-hot-pepper-three","sensor-background","sensor-background-main","spices-comparison","spices-comparison-kinetic","spices-comparison-maxima","spices-comparison-three","spices-comparison-title","svan-salt","svan-salt-kinetic","svan-salt-main","svan-salt-maxima","svan-salt-three","table-salt","table-salt-kinetic","table-salt-main","table-salt-maxima","table-salt-three","turmeric","turmeric-kinetic","turmeric-main","turmeric-maxima","turmeric-three","universal","universal-kinetic","universal-main","universal-maxima","universal-three","why-fingerprints-look-similar"];
+ let anchor;
+ try{anchor=decodeURIComponent(location.hash.slice(1));}catch(e){return;}
+ if(!artworkAnchors.includes(anchor))return;
+ const target=new URL('spices.html',location.href);
+ target.search=location.search;target.hash=location.hash;
+ window.exhibitionRedirecting=true;location.replace(target.href);
+})();
+</script>
+<title>Как увидеть запах — Тематические выставки</title>
+<meta name="description" content="Тематические цифровые выставки галереи «Как увидеть запах». Автор проекта — доктор химических наук, профессор, профессор РАН Кучменко Т.А. Первая выставка — «Специи и приправы».">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:light;--background:#f4f0e7;--paper:#fffdf8;--detail:#f0e9dc;--ink:#48414b;--muted:#756c62;--line:#c9bba8;--accent:#55476f;--gold:#a87b43;--shadow:0 16px 44px rgba(65,49,31,.09)}
+html[data-gallery-theme="dark"]{color-scheme:dark;--background:linear-gradient(180deg,#17191c 0%,#202327 44%,#17191c 100%);--paper:#23262b;--detail:#1e2125;--ink:#f0ece4;--muted:#c5c0b7;--line:#565b61;--accent:#e2d8ec;--gold:#d1b481;--shadow:none}
+html,body{margin:0;padding:0}
+body{min-height:100vh;color:var(--ink);background:var(--background);font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.55}
+a{color:var(--accent)}button{font:inherit;cursor:pointer}
+.page{width:min(1180px,94vw);margin:auto;padding:26px 0 54px}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.topline>a{font-size:16px;line-height:1.4;padding:10px 0;min-height:44px;text-underline-offset:4px}
+.theme-tools{display:flex;gap:8px}.theme-tools button{font-size:15px;min-height:44px;padding:8px 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink)}
+.theme-tools button.active{background:#55476f;color:#fff}html[data-gallery-theme="dark"] .theme-tools button.active{background:#f0eadf;color:#332d27}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:5px}
+.project-cover{position:relative;display:block;padding:clamp(34px,5vw,66px);background:var(--paper);border:1px solid var(--gold);border-radius:22px;box-shadow:var(--shadow);isolation:isolate}
+.project-cover::before{content:"";position:absolute;inset:9px;border:1px solid var(--line);border-radius:15px;pointer-events:none;z-index:-1}
+.cover-copy{max-width:940px;margin:auto;text-align:center;min-width:0}.eyebrow{font-size:13px;line-height:1.6;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+h1{color:var(--accent);font-size:clamp(48px,6.8vw,86px);line-height:1.08;font-weight:500;letter-spacing:-.025em;margin:0 0 22px;text-wrap:balance}
+.project-subtitle{font-size:clamp(22px,2.4vw,30px);line-height:1.3;margin:0;color:var(--accent);font-style:italic}
+.ornament{color:var(--gold);font-size:26px;line-height:1;margin:22px 0 18px}
+.author{font-size:16px;line-height:1.5;margin:0;color:var(--muted)}.author strong{display:block;font-size:21px;font-weight:500;line-height:1.4;color:var(--ink);margin-top:4px}
+
+
+
+.welcome{max-width:900px;margin:38px auto 44px;text-align:center}.welcome p{font-size:clamp(20px,1.8vw,23px);line-height:1.6;margin:0}.welcome p+p{margin-top:15px;color:var(--muted);font-size:19px}
+.exhibitions{scroll-margin-top:24px}.section-heading{display:flex;align-items:center;gap:22px;margin:0 0 25px}.section-heading::before,.section-heading::after{content:"";height:1px;flex:1;background:var(--line)}
+.section-heading h2{font-weight:500;font-size:clamp(30px,3.8vw,44px);line-height:1.2;color:var(--accent);margin:0;text-align:center}
+.exhibitions-list{display:grid;gap:30px}.exhibition-card{width:min(1040px,100%);margin:0 auto;min-width:0}
+
+
+
+
+.enter{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:12px 23px;background:#55476f;color:white;border:1px solid #55476f;border-radius:999px;text-decoration:none;font-size:19px;line-height:1.4}
+
+.project-footer{margin:35px auto 0;padding-top:22px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:17px;line-height:1.55}.project-footer p{margin:0 0 14px}.project-footer .closing-line{color:var(--accent);font-size:23px;font-style:italic;margin:19px 0 0}
+@media(max-width:760px){.page{width:calc(100% - 24px);padding-top:16px}.topline{gap:10px;margin-bottom:18px}.topline>a{font-size:14px}.theme-tools button{font-size:14px;padding:8px 12px}.project-cover{padding:34px 24px}h1{font-size:clamp(48px,10vw,72px)}.eyebrow{font-size:11px;letter-spacing:.1em}.author{font-size:15px}.welcome{margin:30px 8px 34px}.welcome p{font-size:20px}.welcome p+p{font-size:18px}.section-heading{gap:12px}.section-heading h2{font-size:30px}.enter{width:100%;font-size:18px}.project-footer{font-size:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.exhibition-entry{display:block;background:var(--paper);color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.exhibition-entry>img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:17px 17px 0 0}
+.exhibition-caption{display:flex;justify-content:space-between;align-items:center;gap:18px 24px;flex-wrap:wrap;padding:22px clamp(20px,3vw,34px)}
+.exhibition-caption .eyebrow{margin:0 0 6px;font-size:12px}
+.exhibition-count{font-size:19px;color:var(--muted);margin:0}
+html[data-gallery-theme="dark"] .enter{background:#e2d8ec;color:#29252e;border-color:#e2d8ec}
+@media(max-width:600px){.exhibition-caption{padding:18px;gap:14px}.exhibition-count{font-size:17px}.exhibition-caption .enter{width:100%}}
+</style>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="analytics.js" defer></script>
+</head>
+<body><main class="page">
+<nav class="topline" aria-label="Галерея и цветовая тема">
+<a href="https://tak2508.github.io/kak-uvidet-zapah/" target="_blank" rel="noopener">Основная галерея «Как увидеть запах» ↗</a>
+<div class="theme-tools" aria-label="Цветовая тема"><button type="button" data-theme="light">Светлая</button><button type="button" data-theme="dark">Тёмная</button></div>
+</nav>
+<header class="project-cover" aria-labelledby="project-title">
+<div class="cover-copy">
+<h1 id="project-title">Как увидеть запах</h1>
+<p class="project-subtitle">Тематические выставки</p>
+<div class="ornament" aria-hidden="true">❦</div>
+<p class="author">Доктор химических наук, профессор, профессор РАН<strong>Кучменко Т.А.</strong></p>
+</div>
+</header>
+<section class="welcome" aria-label="О проекте">
+<p>У каждого запаха — своя история. Тематические выставки галереи «Как увидеть запах» приглашают рассмотреть её в картинах, созданных на основе сигналов электронного носа.</p>
+<p>Каждая выставка посвящена отдельной теме и объединяет художественные композиции, научные пояснения и итоговое сравнение. Здесь можно выбрать выставку и пройти её в собственном темпе.</p>
+</section>
+<section class="exhibitions" id="exhibitions" aria-labelledby="exhibitions-title">
+<div class="section-heading"><h2 id="exhibitions-title">Афиша</h2></div>
+<div class="exhibitions-list">
+<!-- Новые выставки добавляются сюда отдельными exhibition-card со своей страницей и обложкой. -->
+<article class="exhibition-card" aria-label="Тематическая выставка «Специи и приправы»">
+<a class="exhibition-entry" href="spices.html#basil-green" data-keep-theme aria-label="Смотреть картины «Специи и приправы»">
+<img src="assets/spices-hall-cover.webp" width="900" height="675" alt="Специи и приправы. Аромат, сохранённый в сухом растении" loading="lazy" decoding="async">
+<div class="exhibition-caption">
+<div><p class="exhibition-count">27 сухих образцов · 117 картин</p></div>
+<span class="enter">Смотреть картины <span aria-hidden="true">→</span></span>
+</div>
+</a>
+</article>
+</div>
+</section>
+<footer class="project-footer">
+<p>Тематические выставки продолжают авторский проект «Как увидеть запах».<br>Новые экспозиции будут появляться в этой афише.</p>
+<a href="https://tak2508.github.io/kak-uvidet-zapah/" target="_blank" rel="noopener">Посетить основную галерею</a>
+<p class="closing-line">Наука становится искусством</p>
+</footer>
+</main>
+<script id="exhibition-theme">
+(function(){
+ const root=document.documentElement,buttons=[...document.querySelectorAll('[data-theme]')];
+ function setTheme(t){
+  t=t==='dark'?'dark':'light';root.setAttribute('data-gallery-theme',t);
+  buttons.forEach(b=>{b.classList.toggle('active',b.dataset.theme===t);b.setAttribute('aria-pressed',String(b.dataset.theme===t));});
+  document.querySelectorAll('[data-keep-theme]').forEach(a=>{const url=new URL(a.href);url.searchParams.set('theme',t);a.href=url.href;});
+  try{localStorage.setItem('galleryTheme',t)}catch(e){}
+ }
+ buttons.forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.theme)));
+ let initial='light';try{initial=new URLSearchParams(location.search).get('theme')||localStorage.getItem('galleryTheme')||'light'}catch(e){}
+ setTheme(initial);
+})();
+</script>
+</body></html>
